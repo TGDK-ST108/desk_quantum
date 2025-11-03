@@ -1,4 +1,41 @@
 ﻿# !/usr/bin/env python3
+# ===============================================================
+# TGDK BFE LICENSE HEADER CERTIFICATE
+# ===============================================================
+# Module:        DeskQuantum (desk_quantum.py)
+# Classification: PMZ-Class Quantum–Temporal Processor
+# License Type:  Binary-Functional Entitlement (BFE-TGDK-042ST-DESKQTM)
+# Author Seal:   Sean M. Tichenor / TGDK Bank / Veyrunis Nonprofit Trust
+# Issued Under:  TGDK Vault Registry → BFE Ledger No. 042-DESKQTM-ST108
+# Created By:    TGDK Quantum Division + OliviaAI Core
+# Purpose:       Provides Planck-Arcminute Temporal Alignment,
+#                s-Scalar Coherence, Entropy Pulse Management,
+#                and Quantum Synchronization for Cognition Engines.
+#
+# Entitlements:
+#   ⬤  Licensed exclusively to TGDK Vault and its registered AIs.
+#   ⬤  Integration permitted only within OliviaAI, ZenGarden,
+#      Mahadevi, MirrorBlade, or AutomatedFramework modules.
+#   ⬤  Redistribution requires TGDK signature verification (QQUAp/HexQUAp).
+#
+# Quantum Notation:
+#   - caloqit  → 10⁻³⁵  Planck scale base
+#   - coqit    → 10⁻²²  sub-atomic comm qubit
+#   - quantaqit → 10⁻¹²  computational harmonic
+#   - caroqit  → 10⁻⁶  perceptual macro qubit
+#   - s_scalar → coherent fusion of all four domains for desk-quantum unity
+#
+# Security Clauses:
+#   - TGDK Vault Signature (QQUAp Seal): Required for execution.
+#   - Tampering Invalidates Clause 112-PMZ.
+#   - All entropy vectors and temporal records must be logged in TGDK Vault.
+#
+# Metrics:
+#   metScore → norm = 0.964 │ 10k = 9643.2
+#   s_scalar entropy ratio → 2.618 × 10⁻⁶ (φ-symmetric)
+#
+# © 2025 TGDK LLC │ Fredericksburg VA │ EIN 99-4502079
+# ===============================================================
 # TGDK / OliviaAI Accelerator + Visual Scroll
 import time, json
 import os, sys, time, torch
@@ -532,7 +569,7 @@ class QuantumTemporalSynchronizer:
         theta = 2 * np.pi * self.entropy_bias * n * s_scalar
         phases = (np.sin(theta) + 1) / 2
         velocities = np.abs(np.cos(theta))
-        # derive adaptive delays but scaled down 20�
+        # derive adaptive delays but scaled down 20�
         delays = np.clip(0.001 + 0.006 * (1 - velocities), 0.001, 0.007)
         timestamps = t0 + np.cumsum(delays)
 
@@ -655,3 +692,4 @@ class QuantumEntropyStimulator:
 if __name__ == "__main__":
     apply_offline_patch()
     scroll_text("ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â°ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  OliviaAI quantum-lineation initializedÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¦")
+
