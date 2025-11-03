@@ -1,29 +1,29 @@
-# !/usr/bin/env python3
+﻿# !/usr/bin/env python3
 # ===============================================================
 # TGDK BFE LICENSE HEADER CERTIFICATE
 # ===============================================================
 # Module:        DeskQuantum (desk_quantum.py)
-# Classification: PMZ-Class Quantum–Temporal Processor
+# Classification: PMZ-Class Quantumâ€“Temporal Processor
 # License Type:  Binary-Functional Entitlement (BFE-TGDK-042ST-DESKQTM)
 # Author Seal:   Sean M. Tichenor / TGDK Bank / Veyrunis Nonprofit Trust
-# Issued Under:  TGDK Vault Registry → BFE Ledger No. 042-DESKQTM-ST108
+# Issued Under:  TGDK Vault Registry â†’ BFE Ledger No. 042-DESKQTM-ST108
 # Created By:    TGDK Quantum Division + OliviaAI Core
 # Purpose:       Provides Planck-Arcminute Temporal Alignment,
 #                s-Scalar Coherence, Entropy Pulse Management,
 #                and Quantum Synchronization for Cognition Engines.
 #
 # Entitlements:
-#   ⬤  Licensed exclusively to TGDK Vault and its registered AIs.
-#   ⬤  Integration permitted only within OliviaAI, ZenGarden,
+#   â¬¤  Licensed exclusively to TGDK Vault and its registered AIs.
+#   â¬¤  Integration permitted only within OliviaAI, ZenGarden,
 #      Mahadevi, MirrorBlade, or AutomatedFramework modules.
-#   ⬤  Redistribution requires TGDK signature verification (QQUAp/HexQUAp).
+#   â¬¤  Redistribution requires TGDK signature verification (QQUAp/HexQUAp).
 #
 # Quantum Notation:
-#   - caloqit  → 10⁻³⁵  Planck scale base
-#   - coqit    → 10⁻²²  sub-atomic comm qubit
-#   - quantaqit → 10⁻¹²  computational harmonic
-#   - caroqit  → 10⁻⁶  perceptual macro qubit
-#   - s_scalar → coherent fusion of all four domains for desk-quantum unity
+#   - caloqit  â†’ 10â»Â³âµ  Planck scale base
+#   - coqit    â†’ 10â»Â²Â²  sub-atomic comm qubit
+#   - quantaqit â†’ 10â»Â¹Â²  computational harmonic
+#   - caroqit  â†’ 10â»â¶  perceptual macro qubit
+#   - s_scalar â†’ coherent fusion of all four domains for desk-quantum unity
 #
 # Security Clauses:
 #   - TGDK Vault Signature (QQUAp Seal): Required for execution.
@@ -31,10 +31,10 @@
 #   - All entropy vectors and temporal records must be logged in TGDK Vault.
 #
 # Metrics:
-#   metScore → norm = 0.964 │ 10k = 9643.2
-#   s_scalar entropy ratio → 2.618 × 10⁻⁶ (φ-symmetric)
+#   metScore â†’ norm = 0.964 â”‚ 10k = 9643.2
+#   s_scalar entropy ratio â†’ 2.618 Ã— 10â»â¶ (Ï†-symmetric)
 #
-# © 2025 TGDK LLC │ Fredericksburg VA │ EIN 99-4502079
+# Â© 2025 TGDK LLC â”‚ Fredericksburg VA â”‚ EIN 99-4502079
 # ===============================================================
 # TGDK / OliviaAI Accelerator + Visual Scroll
 import time, json
@@ -91,10 +91,10 @@ def apply_offline_patch(accelerate_io=True):
 class QuantumMemoryBuffer:
     """
     PMZ memory lattice storing cognition history, entropy, and scalar rhythm.
-    Each entry represents one desk-quantum event, aligned by PlanckÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“arcminute timestamps.
+    Each entry represents one desk-quantum event, aligned by PlanckÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œarcminute timestamps.
     """
 
-    def __init__(self, buffer_dir: str = "./memory_cache", max_entries: int = 1024):
+    def __init__(self, buffer_dir: str = "./memory_cache", max_entries: int = 2048):
         self.buffer_dir = Path(buffer_dir)
         self.buffer_dir.mkdir(exist_ok=True, parents=True)
         self.memory_file = self.buffer_dir / "quantum_memory.jsonl"
@@ -173,9 +173,9 @@ class QuantumCognitionDriver:
         self.history = []
         self.cycle_count = 0
 
-    def generate_cycle(self, prompt: str, max_new_tokens: int = 144):
+    def generate_cycle(self, prompt: str, max_new_tokens: int = 256):
         """
-        Perform one 144-token cognition cycle.
+        Perform one 3-token cognition cycle.
         Phase, delay, and entropy magnitude are logged each pass.
         """
         gates = self.sync.sync()
@@ -212,7 +212,7 @@ class QuantumCognitionDriver:
         time.sleep(delay)     # temporal gate from synchronizer
         return text
 
-    def run_recursion(self, prompt: str, cycles: int = 36):
+    def run_recursion(self, prompt: str, cycles: int = 3):
         """
         Runs multiple cognition cycles with feedback from prior output.
         """
@@ -233,10 +233,121 @@ class QuantumCognitionDriver:
             return "No cognition cycles run yet."
         last = self.history[-1]
         return (
-            f"ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  Cognition Driver ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â {self.cycle_count} cycles\n"
+            f"ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â°ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  Cognition Driver ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â {self.cycle_count} cycles\n"
             f"Last phase {last['phase']:.4f}, entropy {last['entropy']:.3e}, delay {last['delay']:.4f}s"
         )
 
+
+class QuantumFeedbackRecursionEngine:
+    """
+    PMZ-aligned feedback core.
+    Reads memory buffer, measures entropy/phase drift, 
+    and produces adjusted prompts for next cognition cycles.
+    """
+
+    def __init__(self, memory: QuantumMemoryBuffer, s_scalar=None):
+        self.memory = memory
+        self.sync = QuantumTemporalSynchronizer()
+        self.scalar_ref = s_scalar
+        self.last_feedback_vector = torch.zeros(4)
+
+    # ----------------------------------------------------
+    # Core feedback synthesis
+    # ----------------------------------------------------
+    def _compute_feedback_vector(self, entries):
+        """
+        Translate recent memory into a 4-component tensor 
+        representing [coherence, rhythm, entropy, clarity].
+        """
+        if not entries:
+            return torch.zeros(4)
+
+        # aggregate basic statistics
+        entropy_vals = [e["entropy"] for e in entries]
+        phases = [e["phase"] for e in entries]
+        mean_entropy = sum(entropy_vals) / len(entropy_vals)
+        phase_drift = abs(phases[-1] - phases[0]) / max(1, len(phases))
+
+        # s_scalar weighting ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â anchors to physical rhythm
+        s = self.scalar_ref.measure("quantaqit") if self.scalar_ref else 1e-6
+        rhythm = math.sin(self.sync.global_phase + s * 1e12)
+        coherence = max(0.0, 1.0 - phase_drift)
+        clarity = 1.0 / (1.0 + mean_entropy * 1e6)
+
+        vec = torch.tensor([coherence, rhythm, mean_entropy, clarity], dtype=torch.float32)
+        # normalize
+        vec = vec / torch.norm(vec)
+        return vec
+
+    # ----------------------------------------------------
+    # Public interface
+    # ----------------------------------------------------
+    def derive_prompt(self, base_prompt: str, context_depth: int = 5):
+        """
+        Generate a new recursion prompt weighted by PMZ feedback vector.
+        """
+        context = self.memory.recall(context_depth)
+        feedback_vec = self._compute_feedback_vector(context)
+        self.last_feedback_vector = feedback_vec
+
+        # Map feedback vector to lexical modulation
+        coherence, rhythm, entropy, clarity = feedback_vec.tolist()
+        intensity = (coherence + rhythm) / 2
+        tension = (1 - clarity) * entropy * 1000
+
+        mod_phrase = (
+            f"// Feedback phase={self.sync.global_phase:.4f} "
+            f"coh={coherence:.2f} ent={entropy:.2e} clar={clarity:.2f} "
+            f"ÃƒÆ’Ã…Â½ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â={tension:.2f}"
+        )
+
+        # assemble adaptive prompt
+        adjusted_prompt = (
+            f"{base_prompt}\n"
+            f"{mod_phrase}\n"
+            f"Amplify focus by {intensity:.3f}, reduce noise by {clarity:.3f}."
+        )
+        return adjusted_prompt
+
+    def feedback_tensor(self):
+        """Return the last computed feedback vector for introspection."""
+        return self.last_feedback_vector
+
+    def __repr__(self):
+        v = self.last_feedback_vector.tolist()
+        return f"<QFeedback vec={v}>"
+        
+class AttitudeResponseController:
+    """
+    Maps cognitive attitude metrics into generation parameters.
+    Converts entropy, clarity, and efficacy into dynamic temperature + token scaling.
+    """
+
+    def __init__(self):
+        self.last_entropy = 0.0
+        self.last_clarity = 0.5
+        self.last_efficacy = 0.5
+
+    def compute(self, entropy_mag: float, clarity: float, efficacy: float):
+        """
+        entropy_mag  Ã¢â€ â€™ measures turbulence / intensity of thought
+        clarity      Ã¢â€ â€™ 0Ã¢â‚¬â€œ1 (higher = more focused)
+        efficacy     Ã¢â€ â€™ 0Ã¢â‚¬â€œ1 (higher = mission success alignment)
+        Returns adaptive temperature and token_scale.
+        """
+        # store historicals for smoothing
+        self.last_entropy = 0.8 * self.last_entropy + 0.2 * entropy_mag
+        self.last_clarity = 0.7 * self.last_clarity + 0.3 * clarity
+        self.last_efficacy = 0.7 * self.last_efficacy + 0.3 * efficacy
+
+        # temperament scaling: hotter when entropy Ã¢â€ â€˜ or clarity Ã¢â€ â€œ
+        raw_temp = 0.8 + (self.last_entropy * 1e-6) - (self.last_clarity * 0.2)
+        temp = max(0.2, min(1.2, raw_temp))
+
+        # mission alignment compresses or expands token bursts
+        token_scale = 1.0 + ((1 - self.last_efficacy) * 0.5)
+
+        return temp, token_scale
 
 class QuantumFeedbackRecursionEngine:
     """
@@ -316,122 +427,11 @@ class QuantumFeedbackRecursionEngine:
     def __repr__(self):
         v = self.last_feedback_vector.tolist()
         return f"<QFeedback vec={v}>"
-        
-class AttitudeResponseController:
-    """
-    Maps cognitive attitude metrics into generation parameters.
-    Converts entropy, clarity, and efficacy into dynamic temperature + token scaling.
-    """
-
-    def __init__(self):
-        self.last_entropy = 0.0
-        self.last_clarity = 0.5
-        self.last_efficacy = 0.5
-
-    def compute(self, entropy_mag: float, clarity: float, efficacy: float):
-        """
-        entropy_mag  â†’ measures turbulence / intensity of thought
-        clarity      â†’ 0â€“1 (higher = more focused)
-        efficacy     â†’ 0â€“1 (higher = mission success alignment)
-        Returns adaptive temperature and token_scale.
-        """
-        # store historicals for smoothing
-        self.last_entropy = 0.8 * self.last_entropy + 0.2 * entropy_mag
-        self.last_clarity = 0.7 * self.last_clarity + 0.3 * clarity
-        self.last_efficacy = 0.7 * self.last_efficacy + 0.3 * efficacy
-
-        # temperament scaling: hotter when entropy â†‘ or clarity â†“
-        raw_temp = 0.8 + (self.last_entropy * 1e-6) - (self.last_clarity * 0.2)
-        temp = max(0.2, min(1.2, raw_temp))
-
-        # mission alignment compresses or expands token bursts
-        token_scale = 1.0 + ((1 - self.last_efficacy) * 0.5)
-
-        return temp, token_scale
-
-class QuantumFeedbackRecursionEngine:
-    """
-    PMZ-aligned feedback core.
-    Reads memory buffer, measures entropy/phase drift, 
-    and produces adjusted prompts for next cognition cycles.
-    """
-
-    def __init__(self, memory: QuantumMemoryBuffer, s_scalar=None):
-        self.memory = memory
-        self.sync = QuantumTemporalSynchronizer()
-        self.scalar_ref = s_scalar
-        self.last_feedback_vector = torch.zeros(4)
-
-    # ----------------------------------------------------
-    # Core feedback synthesis
-    # ----------------------------------------------------
-    def _compute_feedback_vector(self, entries):
-        """
-        Translate recent memory into a 4-component tensor 
-        representing [coherence, rhythm, entropy, clarity].
-        """
-        if not entries:
-            return torch.zeros(4)
-
-        # aggregate basic statistics
-        entropy_vals = [e["entropy"] for e in entries]
-        phases = [e["phase"] for e in entries]
-        mean_entropy = sum(entropy_vals) / len(entropy_vals)
-        phase_drift = abs(phases[-1] - phases[0]) / max(1, len(phases))
-
-        # s_scalar weighting Ã¢â‚¬â€ anchors to physical rhythm
-        s = self.scalar_ref.measure("quantaqit") if self.scalar_ref else 1e-6
-        rhythm = math.sin(self.sync.global_phase + s * 1e12)
-        coherence = max(0.0, 1.0 - phase_drift)
-        clarity = 1.0 / (1.0 + mean_entropy * 1e6)
-
-        vec = torch.tensor([coherence, rhythm, mean_entropy, clarity], dtype=torch.float32)
-        # normalize
-        vec = vec / torch.norm(vec)
-        return vec
-
-    # ----------------------------------------------------
-    # Public interface
-    # ----------------------------------------------------
-    def derive_prompt(self, base_prompt: str, context_depth: int = 5):
-        """
-        Generate a new recursion prompt weighted by PMZ feedback vector.
-        """
-        context = self.memory.recall(context_depth)
-        feedback_vec = self._compute_feedback_vector(context)
-        self.last_feedback_vector = feedback_vec
-
-        # Map feedback vector to lexical modulation
-        coherence, rhythm, entropy, clarity = feedback_vec.tolist()
-        intensity = (coherence + rhythm) / 2
-        tension = (1 - clarity) * entropy * 1000
-
-        mod_phrase = (
-            f"// Feedback phase={self.sync.global_phase:.4f} "
-            f"coh={coherence:.2f} ent={entropy:.2e} clar={clarity:.2f} "
-            f"ÃŽâ€={tension:.2f}"
-        )
-
-        # assemble adaptive prompt
-        adjusted_prompt = (
-            f"{base_prompt}\n"
-            f"{mod_phrase}\n"
-            f"Amplify focus by {intensity:.3f}, reduce noise by {clarity:.3f}."
-        )
-        return adjusted_prompt
-
-    def feedback_tensor(self):
-        """Return the last computed feedback vector for introspection."""
-        return self.last_feedback_vector
-
-    def __repr__(self):
-        v = self.last_feedback_vector.tolist()
-        return f"<QFeedback vec={v}>"
 
 class QuantumSentenceEmitter:
     """
     Streams generated text tokens in real time according to
-    PlanckÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œarcminute pacing and desk-quantum scalar modulation.
+    PlanckÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“arcminute pacing and desk-quantum scalar modulation.
     """
 
     def __init__(self, model, tokenizer, seed=None, s_scalar=None):
@@ -497,7 +497,7 @@ class QuantumSentenceEmitter:
 
         text = self.tokenizer.decode(output[0], skip_special_tokens=True)
         self.buffer += text
-        sys.stdout.write("\n[Emitter] ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ ")
+        sys.stdout.write("\n[Emitter] ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ ")
         sys.stdout.flush()
 
         # stream characters one by one with rhythm modulation
@@ -515,7 +515,7 @@ class QuantumSentenceEmitter:
         """
         current = seed_prompt
         for i in range(cycles):
-            print(f"\nÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸Ãƒâ€¦Ã¢â‚¬â„¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ Emission Cycle {i+1:02d}")
+            print(f"\nÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã¢â‚¬Â¦ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ Emission Cycle {i+1:02d}")
             out = self.emit_text(current)
             current = " ".join(out.split()[-32:])
         return self.buffer
@@ -523,8 +523,8 @@ class QuantumSentenceEmitter:
 
 class QuantumTemporalSynchronizer:
     """
-    Aligns desk-quantum operations to PlanckÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“arcminute intervals.
-    Provides precise temporal gating for 144-fold PMZ recursion cycles.
+    Aligns desk-quantum operations to PlanckÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œarcminute intervals.
+    Provides precise temporal gating for 3-fold PMZ recursion cycles.
     """
     def __init__(self, seed: int = 0):
         import math, time, random
@@ -553,11 +553,11 @@ class QuantumTemporalSynchronizer:
         delta = (t - self.last_sync)
         self.last_sync = t
 
-        # oscillatory modulation between 0â€“1, tied to entropy bias
+        # oscillatory modulation between 0Ã¢â‚¬â€œ1, tied to entropy bias
         phase = (math.sin(t * self.entropy_bias * math.pi * 2) + 1) / 2
         self.global_phase = phase
 
-        # measure derivative of the phase curve for velocity (0â€“1)
+        # measure derivative of the phase curve for velocity (0Ã¢â‚¬â€œ1)
         self.phase_velocity = abs(math.cos(t * self.entropy_bias * math.pi * 2))
 
         # adaptive delay: compress as activity increases
@@ -572,7 +572,7 @@ class QuantumTemporalSynchronizer:
             "timestamp": t,
         }
 
-    def run_cycle(self, cycles=144, s_scalar=1.0):
+    def run_cycle(self, cycles=None, s_scalar=1.0):
         """
         Perform a full PMZ cycle using ZenGarden vectorization.
         Returns a list of gate dictionaries {phase, velocity, delay, timestamp}.
@@ -583,7 +583,7 @@ class QuantumTemporalSynchronizer:
         theta = 2 * np.pi * self.entropy_bias * n * s_scalar
         phases = (np.sin(theta) + 1) / 2
         velocities = np.abs(np.cos(theta))
-        # derive adaptive delays but scaled down 20×
+        # derive adaptive delays but scaled down 20Ã—
         delays = np.clip(0.001 + 0.006 * (1 - velocities), 0.001, 0.007)
         timestamps = t0 + np.cumsum(delays)
 
@@ -591,35 +591,47 @@ class QuantumTemporalSynchronizer:
         self.global_phase = float(phases[-1])
 
         gates = []
-        for i in range(cycles):
-            gates.append({
-                "phase": float(phases[i]),
-                "velocity": float(velocities[i]),
-                "delay": float(delays[i]),
-                "timestamp": float(timestamps[i]),
-            })
-        return gates
+        if cycles is None:
+            entropy_hint = random.random()
+            clarity_hint = abs((self.global_phase % 1) - 0.5) * 2
+            # Higher clarity -> shorter recursion, higher entropy -> longer
+            if clarity_hint > 0.75:
+                cycles = 3
+            elif entropy_hint > 0.6:
+                cycles = 4
+            else:
+                cycles = random.choice([3, 4])
 
-    def __repr__(self):
-        return f"<QuantumTemporalSynchronizer phase={self.global_phase:.4f}>"
+                print(f"[OliviaAI] 🌀 Running {cycles} PMZ cycles (auto-selected)")
+                for i in range(cycles):
+                    gates.append({
+                        "phase": float(phases[i]),
+                        "velocity": float(velocities[i]),
+                        "delay": float(delays[i]),
+                        "timestamp": float(timestamps[i]),
+                    })
+                return gates
+     
+            def __repr__(self):
+                return f"<QuantumTemporalSynchronizer phase={self.global_phase:.4f}>"
 
 
 def recursive_generation(prompt, tokenizer, model):
     """
-    Generates 144-token bursts recursively every 0.12 s (ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â°ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¹ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â  Planck-arcminute rhythm).
+    Generates 3-token bursts recursively every 0.12 s (ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â°ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¹ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  Planck-arcminute rhythm).
     """
     inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
     cumulative_text = ""
 
-    for cycle in range(144):  # 144 recursions = full cycle
-        outputs = model.generate(**inputs, max_new_tokens=72, pad_token_id=2)
+    for cycle in range(3):  # 3 recursions = full cycle
+        outputs = model.generate(**inputs, max_new_tokens=256, pad_token_id=2)
         text = tokenizer.decode(outputs[0], skip_special_tokens=True)
         cumulative_text += text
 
-        print(f"\n[Cycle {cycle+1:03}] ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â {time.strftime('%H:%M:%S')} ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â {len(cumulative_text)} chars")
+        print(f"\n[Cycle {cycle+1:03}] ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â {time.strftime('%H:%M:%S')} ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â {len(cumulative_text)} chars")
         print(text.strip())
 
-        # rhythmic pacing ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 0.12 s delay per emission
+        # rhythmic pacing ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 0.12 s delay per emission
         time.sleep(0.12)
 
         # feed-back recursion: last few tokens become next seed
@@ -644,8 +656,33 @@ class DeskQuantumScalar:
         self.scalar = self._synthesize_scalar(calibration_seed)
 
     def _synthesize_scalar(self, seed=None):
-        base = math.sin(time.time() * 144) * (seed or random.random())
-        return abs(base) * (self.caloqit + self.coqit + self.quantaqit + self.caroqit)
+        """
+        Generate a fragmented scalar derived from the dimensional foundation.
+        The function fuses four harmonics:
+          1. Temporal - oscillation across Planck-domain time
+          2. Spatial - self.phase rotation (internal coherence)
+          3. Entropic - stochastic resonance (random perturbation)
+          4. Reflective - phi-symmetric echo from prior pulses
+        """
+        t = time.time()
+        s = seed or random.random()
+
+        # === Dimensional harmonics ===
+        temporal = math.sin(t * 12 * 144 * math.pi) * self.caloqit          # deep time foundation
+        spatial = math.cos((self.phase + s) * 2 * math.pi) * self.coqit     # internal rotation
+        entropic = (random.random() - 0.5) * 2 * self.quantaqit             # chaotic pulse
+        reflective = math.sin((temporal + spatial) * 144 * math.pi) * self.caroqit  # echo feedback
+
+        # === Fragment and recombine ===
+        fragments = [temporal, spatial, entropic, reflective]
+        magnitude = sum(abs(f) for f in fragments)
+
+        # Weighted sum with phi-resonant modulation (ensures balance across layers)
+        phi = 0.61803398875
+        scalar = magnitude * (1 + phi * s)
+
+        return abs(scalar)
+
 
     def measure(self, unit="quantaqit"):
         """Return scalar value adjusted by chosen quantum unit."""
@@ -705,4 +742,4 @@ class QuantumEntropyStimulator:
 # ===============================
 if __name__ == "__main__":
     apply_offline_patch()
-    scroll_text("ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â°ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  OliviaAI quantum-lineation initializedÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¦")
+    scroll_text("ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â°ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  OliviaAI quantum-lineation initializedÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¦")
