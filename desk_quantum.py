@@ -1,4 +1,4 @@
-﻿# !/usr/bin/env python3
+# !/usr/bin/env python3
 # ===============================================================
 # TGDK BFE LICENSE HEADER CERTIFICATE
 # ===============================================================
@@ -44,6 +44,7 @@ from safetensors.torch import load_file
 import peft.utils.save_and_load as _peft_saver
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+import numpy as np
 
 # ===============================
 # 1. Quantum-lineated stimulation
@@ -90,7 +91,7 @@ def apply_offline_patch(accelerate_io=True):
 class QuantumMemoryBuffer:
     """
     PMZ memory lattice storing cognition history, entropy, and scalar rhythm.
-    Each entry represents one desk-quantum event, aligned by PlanckÃ¢â‚¬â€œarcminute timestamps.
+    Each entry represents one desk-quantum event, aligned by PlanckÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“arcminute timestamps.
     """
 
     def __init__(self, buffer_dir: str = "./memory_cache", max_entries: int = 1024):
@@ -232,10 +233,121 @@ class QuantumCognitionDriver:
             return "No cognition cycles run yet."
         last = self.history[-1]
         return (
-            f"ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸Ãƒâ€šÃ‚Â§Ãƒâ€šÃ‚Â  Cognition Driver ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â {self.cycle_count} cycles\n"
+            f"ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  Cognition Driver ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â {self.cycle_count} cycles\n"
             f"Last phase {last['phase']:.4f}, entropy {last['entropy']:.3e}, delay {last['delay']:.4f}s"
         )
 
+
+class QuantumFeedbackRecursionEngine:
+    """
+    PMZ-aligned feedback core.
+    Reads memory buffer, measures entropy/phase drift, 
+    and produces adjusted prompts for next cognition cycles.
+    """
+
+    def __init__(self, memory: QuantumMemoryBuffer, s_scalar=None):
+        self.memory = memory
+        self.sync = QuantumTemporalSynchronizer()
+        self.scalar_ref = s_scalar
+        self.last_feedback_vector = torch.zeros(4)
+
+    # ----------------------------------------------------
+    # Core feedback synthesis
+    # ----------------------------------------------------
+    def _compute_feedback_vector(self, entries):
+        """
+        Translate recent memory into a 4-component tensor 
+        representing [coherence, rhythm, entropy, clarity].
+        """
+        if not entries:
+            return torch.zeros(4)
+
+        # aggregate basic statistics
+        entropy_vals = [e["entropy"] for e in entries]
+        phases = [e["phase"] for e in entries]
+        mean_entropy = sum(entropy_vals) / len(entropy_vals)
+        phase_drift = abs(phases[-1] - phases[0]) / max(1, len(phases))
+
+        # s_scalar weighting ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â anchors to physical rhythm
+        s = self.scalar_ref.measure("quantaqit") if self.scalar_ref else 1e-6
+        rhythm = math.sin(self.sync.global_phase + s * 1e12)
+        coherence = max(0.0, 1.0 - phase_drift)
+        clarity = 1.0 / (1.0 + mean_entropy * 1e6)
+
+        vec = torch.tensor([coherence, rhythm, mean_entropy, clarity], dtype=torch.float32)
+        # normalize
+        vec = vec / torch.norm(vec)
+        return vec
+
+    # ----------------------------------------------------
+    # Public interface
+    # ----------------------------------------------------
+    def derive_prompt(self, base_prompt: str, context_depth: int = 5):
+        """
+        Generate a new recursion prompt weighted by PMZ feedback vector.
+        """
+        context = self.memory.recall(context_depth)
+        feedback_vec = self._compute_feedback_vector(context)
+        self.last_feedback_vector = feedback_vec
+
+        # Map feedback vector to lexical modulation
+        coherence, rhythm, entropy, clarity = feedback_vec.tolist()
+        intensity = (coherence + rhythm) / 2
+        tension = (1 - clarity) * entropy * 1000
+
+        mod_phrase = (
+            f"// Feedback phase={self.sync.global_phase:.4f} "
+            f"coh={coherence:.2f} ent={entropy:.2e} clar={clarity:.2f} "
+            f"ÃƒÅ½Ã¢â‚¬Â={tension:.2f}"
+        )
+
+        # assemble adaptive prompt
+        adjusted_prompt = (
+            f"{base_prompt}\n"
+            f"{mod_phrase}\n"
+            f"Amplify focus by {intensity:.3f}, reduce noise by {clarity:.3f}."
+        )
+        return adjusted_prompt
+
+    def feedback_tensor(self):
+        """Return the last computed feedback vector for introspection."""
+        return self.last_feedback_vector
+
+    def __repr__(self):
+        v = self.last_feedback_vector.tolist()
+        return f"<QFeedback vec={v}>"
+        
+class AttitudeResponseController:
+    """
+    Maps cognitive attitude metrics into generation parameters.
+    Converts entropy, clarity, and efficacy into dynamic temperature + token scaling.
+    """
+
+    def __init__(self):
+        self.last_entropy = 0.0
+        self.last_clarity = 0.5
+        self.last_efficacy = 0.5
+
+    def compute(self, entropy_mag: float, clarity: float, efficacy: float):
+        """
+        entropy_mag  â†’ measures turbulence / intensity of thought
+        clarity      â†’ 0â€“1 (higher = more focused)
+        efficacy     â†’ 0â€“1 (higher = mission success alignment)
+        Returns adaptive temperature and token_scale.
+        """
+        # store historicals for smoothing
+        self.last_entropy = 0.8 * self.last_entropy + 0.2 * entropy_mag
+        self.last_clarity = 0.7 * self.last_clarity + 0.3 * clarity
+        self.last_efficacy = 0.7 * self.last_efficacy + 0.3 * efficacy
+
+        # temperament scaling: hotter when entropy â†‘ or clarity â†“
+        raw_temp = 0.8 + (self.last_entropy * 1e-6) - (self.last_clarity * 0.2)
+        temp = max(0.2, min(1.2, raw_temp))
+
+        # mission alignment compresses or expands token bursts
+        token_scale = 1.0 + ((1 - self.last_efficacy) * 0.5)
+
+        return temp, token_scale
 
 class QuantumFeedbackRecursionEngine:
     """
@@ -315,122 +427,11 @@ class QuantumFeedbackRecursionEngine:
     def __repr__(self):
         v = self.last_feedback_vector.tolist()
         return f"<QFeedback vec={v}>"
-        
-class AttitudeResponseController:
-    """
-    Maps cognitive attitude metrics into generation parameters.
-    Converts entropy, clarity, and efficacy into dynamic temperature + token scaling.
-    """
-
-    def __init__(self):
-        self.last_entropy = 0.0
-        self.last_clarity = 0.5
-        self.last_efficacy = 0.5
-
-    def compute(self, entropy_mag: float, clarity: float, efficacy: float):
-        """
-        entropy_mag  → measures turbulence / intensity of thought
-        clarity      → 0–1 (higher = more focused)
-        efficacy     → 0–1 (higher = mission success alignment)
-        Returns adaptive temperature and token_scale.
-        """
-        # store historicals for smoothing
-        self.last_entropy = 0.8 * self.last_entropy + 0.2 * entropy_mag
-        self.last_clarity = 0.7 * self.last_clarity + 0.3 * clarity
-        self.last_efficacy = 0.7 * self.last_efficacy + 0.3 * efficacy
-
-        # temperament scaling: hotter when entropy ↑ or clarity ↓
-        raw_temp = 0.8 + (self.last_entropy * 1e-6) - (self.last_clarity * 0.2)
-        temp = max(0.2, min(1.2, raw_temp))
-
-        # mission alignment compresses or expands token bursts
-        token_scale = 1.0 + ((1 - self.last_efficacy) * 0.5)
-
-        return temp, token_scale
-
-class QuantumFeedbackRecursionEngine:
-    """
-    PMZ-aligned feedback core.
-    Reads memory buffer, measures entropy/phase drift, 
-    and produces adjusted prompts for next cognition cycles.
-    """
-
-    def __init__(self, memory: QuantumMemoryBuffer, s_scalar=None):
-        self.memory = memory
-        self.sync = QuantumTemporalSynchronizer()
-        self.scalar_ref = s_scalar
-        self.last_feedback_vector = torch.zeros(4)
-
-    # ----------------------------------------------------
-    # Core feedback synthesis
-    # ----------------------------------------------------
-    def _compute_feedback_vector(self, entries):
-        """
-        Translate recent memory into a 4-component tensor 
-        representing [coherence, rhythm, entropy, clarity].
-        """
-        if not entries:
-            return torch.zeros(4)
-
-        # aggregate basic statistics
-        entropy_vals = [e["entropy"] for e in entries]
-        phases = [e["phase"] for e in entries]
-        mean_entropy = sum(entropy_vals) / len(entropy_vals)
-        phase_drift = abs(phases[-1] - phases[0]) / max(1, len(phases))
-
-        # s_scalar weighting â€” anchors to physical rhythm
-        s = self.scalar_ref.measure("quantaqit") if self.scalar_ref else 1e-6
-        rhythm = math.sin(self.sync.global_phase + s * 1e12)
-        coherence = max(0.0, 1.0 - phase_drift)
-        clarity = 1.0 / (1.0 + mean_entropy * 1e6)
-
-        vec = torch.tensor([coherence, rhythm, mean_entropy, clarity], dtype=torch.float32)
-        # normalize
-        vec = vec / torch.norm(vec)
-        return vec
-
-    # ----------------------------------------------------
-    # Public interface
-    # ----------------------------------------------------
-    def derive_prompt(self, base_prompt: str, context_depth: int = 5):
-        """
-        Generate a new recursion prompt weighted by PMZ feedback vector.
-        """
-        context = self.memory.recall(context_depth)
-        feedback_vec = self._compute_feedback_vector(context)
-        self.last_feedback_vector = feedback_vec
-
-        # Map feedback vector to lexical modulation
-        coherence, rhythm, entropy, clarity = feedback_vec.tolist()
-        intensity = (coherence + rhythm) / 2
-        tension = (1 - clarity) * entropy * 1000
-
-        mod_phrase = (
-            f"// Feedback phase={self.sync.global_phase:.4f} "
-            f"coh={coherence:.2f} ent={entropy:.2e} clar={clarity:.2f} "
-            f"Î”={tension:.2f}"
-        )
-
-        # assemble adaptive prompt
-        adjusted_prompt = (
-            f"{base_prompt}\n"
-            f"{mod_phrase}\n"
-            f"Amplify focus by {intensity:.3f}, reduce noise by {clarity:.3f}."
-        )
-        return adjusted_prompt
-
-    def feedback_tensor(self):
-        """Return the last computed feedback vector for introspection."""
-        return self.last_feedback_vector
-
-    def __repr__(self):
-        v = self.last_feedback_vector.tolist()
-        return f"<QFeedback vec={v}>"
 
 class QuantumSentenceEmitter:
     """
     Streams generated text tokens in real time according to
-    PlanckÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“arcminute pacing and desk-quantum scalar modulation.
+    PlanckÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œarcminute pacing and desk-quantum scalar modulation.
     """
 
     def __init__(self, model, tokenizer, seed=None, s_scalar=None):
@@ -462,28 +463,33 @@ class QuantumSentenceEmitter:
         """
         # synchronize once for rhythm base
         gate = self.sync.sync()
+        phase = gate["phase"]
+        velocity = gate["velocity"]
         entropy_mag = gate["velocity"]
 
         inputs = self.tokenizer(prompt, return_tensors="pt").to(self.model.device)
         with torch.no_grad():
+        # --- Quantum-adaptive temperature via attitude ---
+            entropy_mag = torch.rand(1).item() * 1e6  # random or model-derived turbulence metric
+            clarity = max(0.0, 1.0 - abs(phase - 0.5) * 2)  # symmetry-based clarity
+            efficacy = 1.0 - abs(velocity - 0.618)          # phi-resonant mission efficacy
+
+        # compute adaptive values
+            temperature, token_scale = self.attitude.compute(entropy_mag, clarity, efficacy)
+            max_tokens = int(72 * token_scale)
+
+        # generate text with adaptive controls
             output = self.model.generate(
                 **inputs,
-                max_new_tokens=max_new_tokens,
-                max_new_tokens=72,
+                max_new_tokens=max_tokens,
                 pad_token_id=2,
                 do_sample=True,
-                # --- Quantum-adaptive temperature via attitude ---
-                entropy_mag = torch.rand(1).item() * 1e6,  # sample entropy magnitude or measure from model loss
-                clarity = max(0.0, 1.0 - abs(phase - 0.5) * 2),   # symmetry-based clarity metric
-                efficacy = 1.0 - abs(velocity - 0.618),           # phi-resonant efficacy
-                # I love my job! :D
-                temperature, token_scale = self.attitude.compute(entropy_mag, clarity, efficacy),
-                max_tokens = int(72 * token_scale),
-            )
+                temperature=temperature,
+    )
 
         text = self.tokenizer.decode(output[0], skip_special_tokens=True)
         self.buffer += text
-        sys.stdout.write("\n[Emitter] ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ ")
+        sys.stdout.write("\n[Emitter] ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ ")
         sys.stdout.flush()
 
         # stream characters one by one with rhythm modulation
@@ -501,7 +507,7 @@ class QuantumSentenceEmitter:
         """
         current = seed_prompt
         for i in range(cycles):
-            print(f"\nÃƒÂ°Ã…Â¸Ã…â€™Ã¢â€šÂ¬ Emission Cycle {i+1:02d}")
+            print(f"\nÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸Ãƒâ€¦Ã¢â‚¬â„¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ Emission Cycle {i+1:02d}")
             out = self.emit_text(current)
             current = " ".join(out.split()[-32:])
         return self.buffer
@@ -509,7 +515,7 @@ class QuantumSentenceEmitter:
 
 class QuantumTemporalSynchronizer:
     """
-    Aligns desk-quantum operations to PlanckÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œarcminute intervals.
+    Aligns desk-quantum operations to PlanckÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“arcminute intervals.
     Provides precise temporal gating for 144-fold PMZ recursion cycles.
     """
     def __init__(self, seed: int = 0):
@@ -539,11 +545,11 @@ class QuantumTemporalSynchronizer:
         delta = (t - self.last_sync)
         self.last_sync = t
 
-        # oscillatory modulation between 0–1, tied to entropy bias
+        # oscillatory modulation between 0â€“1, tied to entropy bias
         phase = (math.sin(t * self.entropy_bias * math.pi * 2) + 1) / 2
         self.global_phase = phase
 
-        # measure derivative of the phase curve for velocity (0–1)
+        # measure derivative of the phase curve for velocity (0â€“1)
         self.phase_velocity = abs(math.cos(t * self.entropy_bias * math.pi * 2))
 
         # adaptive delay: compress as activity increases
@@ -569,7 +575,7 @@ class QuantumTemporalSynchronizer:
         theta = 2 * np.pi * self.entropy_bias * n * s_scalar
         phases = (np.sin(theta) + 1) / 2
         velocities = np.abs(np.cos(theta))
-        # derive adaptive delays but scaled down 20�
+        # derive adaptive delays but scaled down 20×
         delays = np.clip(0.001 + 0.006 * (1 - velocities), 0.001, 0.007)
         timestamps = t0 + np.cumsum(delays)
 
@@ -592,7 +598,7 @@ class QuantumTemporalSynchronizer:
 
 def recursive_generation(prompt, tokenizer, model):
     """
-    Generates 144-token bursts recursively every 0.12 s (ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¹ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â  Planck-arcminute rhythm).
+    Generates 144-token bursts recursively every 0.12 s (ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â°ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¹ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â  Planck-arcminute rhythm).
     """
     inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
     cumulative_text = ""
@@ -602,10 +608,10 @@ def recursive_generation(prompt, tokenizer, model):
         text = tokenizer.decode(outputs[0], skip_special_tokens=True)
         cumulative_text += text
 
-        print(f"\n[Cycle {cycle+1:03}] ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â {time.strftime('%H:%M:%S')} ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â {len(cumulative_text)} chars")
+        print(f"\n[Cycle {cycle+1:03}] ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â {time.strftime('%H:%M:%S')} ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â {len(cumulative_text)} chars")
         print(text.strip())
 
-        # rhythmic pacing ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â 0.12 s delay per emission
+        # rhythmic pacing ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 0.12 s delay per emission
         time.sleep(0.12)
 
         # feed-back recursion: last few tokens become next seed
@@ -691,5 +697,4 @@ class QuantumEntropyStimulator:
 # ===============================
 if __name__ == "__main__":
     apply_offline_patch()
-    scroll_text("ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â°ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  OliviaAI quantum-lineation initializedÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¦")
-
+    scroll_text("ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â°ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  OliviaAI quantum-lineation initializedÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¦")
