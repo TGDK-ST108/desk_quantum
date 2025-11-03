@@ -447,6 +447,14 @@ class QuantumSentenceEmitter:
         np.random.seed(self.seed)
         self.entropy_bias = 0.618
         self.global_phase = 0.0
+        if not hasattr(self, "attitude"):
+            class DefaultAttitude:
+                def compute(self, entropy_mag, clarity, efficacy):
+                    temperature = min(1.2, 0.8 + entropy_mag * 1e-6)
+                    token_scale = 0.5 + clarity * efficacy
+                    return temperature, token_scale
+            self.attitude = DefaultAttitude()
+ 
 
     def _token_sleep(self, velocity: float):
         """
@@ -485,7 +493,7 @@ class QuantumSentenceEmitter:
                 pad_token_id=2,
                 do_sample=True,
                 temperature=temperature,
-    )
+        )
 
         text = self.tokenizer.decode(output[0], skip_special_tokens=True)
         self.buffer += text
